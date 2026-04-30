@@ -262,3 +262,50 @@ function calcElectrical(){
     <b>Modules/String:</b> 29
   `;
 }
+/* ELECTRICAL */
+function calcElectrical(){
+
+  const tables =
+    Number(document.getElementById("electricalTables").value) || 0;
+
+  const moduleWp =
+    Number(document.getElementById("moduleWp").value);
+
+  const stringsPerInv =
+    Number(document.getElementById("stringsPerInv").value);
+
+  /* TABLE → STRINGS */
+  const strings = tables * 2;
+
+  /* STRINGS → INVERTERS */
+  const inverters =
+    Math.ceil(strings / stringsPerInv);
+
+  /* TABLE → MW DC */
+  const mwDC =
+    ((tables * 58 * moduleWp) / 1000000)
+    .toFixed(2);
+
+  /* INVERTER → MW AC */
+  const mwAC =
+    ((inverters * 275) / 1000)
+    .toFixed(2);
+
+  /* LT PANELS */
+  const ltPanels =
+    (inverters / 16).toFixed(2);
+
+  document.getElementById("electricalOut").innerHTML = `
+  
+    <b>Total Strings:</b> ${strings}<br>
+
+    <b>Total Inverters:</b> ${inverters}<br>
+
+    <b>LT Panels Required:</b> ${ltPanels}<br>
+
+    <b>DC Capacity:</b> ${mwDC} MW<br>
+
+    <b>AC Capacity:</b> ${mwAC} MW
+
+  `;
+}
