@@ -21,17 +21,122 @@
 <div class="content">
 
   <!-- MMS -->
-  <div id="mms" class="page active">
-    <div class="card">
-      <h2>🏗️ MMS Calculator</h2>
+  <!-- MMS -->
+<div id="mms" class="page active">
 
-      <input type="number" id="mmsTables" placeholder="Enter Tables">
+  <div class="card">
 
-      <button onclick="calcMMS()">Calculate</button>
+    <h2>🏗️ MMS Calculator</h2>
 
-      <div id="mmsOut" class="output"></div>
+    <!-- TABLE TYPE -->
+    <div class="tabs">
+      <button class="table-btn active"
+        onclick="setMMSTable('full',this)">
+        Full Table
+      </button>
+
+      <button class="table-btn"
+        onclick="setMMSTable('half',this)">
+        Half Table
+      </button>
     </div>
+
+    <!-- MODES -->
+    <div class="subtabs">
+
+      <button class="mode-btn active"
+        onclick="showMMS('t2m',this)">
+        Table → Material
+      </button>
+
+      <button class="mode-btn"
+        onclick="showMMS('m2t',this)">
+        Material → Table
+      </button>
+
+      <button class="mode-btn"
+        onclick="showMMS('t2f',this)">
+        Table → Fasteners
+      </button>
+
+      <button class="mode-btn"
+        onclick="showMMS('f2t',this)">
+        Fasteners → Table
+      </button>
+
+    </div>
+
+    <!-- TABLE TO MATERIAL -->
+    <div id="t2m">
+
+      <input id="mmsTables"
+        type="number"
+        placeholder="No. of Tables">
+
+      <button class="calculate-btn"
+        onclick="calcMaterial()">
+        Calculate
+      </button>
+
+      <div id="mmsResult" class="output"></div>
+
+    </div>
+
+    <!-- MATERIAL TO TABLE -->
+    <div id="m2t" class="hidden">
+
+      <select id="matType"></select>
+
+      <input id="matQty"
+        type="number"
+        placeholder="Material Quantity">
+
+      <button class="calculate-btn"
+        onclick="materialToTable()">
+        Calculate
+      </button>
+
+      <div id="mmsResult2" class="output"></div>
+
+    </div>
+
+    <!-- TABLE TO FASTENER -->
+    <div id="t2f" class="hidden">
+
+      <input id="fasTables"
+        type="number"
+        placeholder="No. of Tables">
+
+      <button class="calculate-btn"
+        onclick="calcFasteners()">
+        Calculate
+      </button>
+
+      <div id="fasResult" class="output"></div>
+
+    </div>
+
+    <!-- FASTENER TO TABLE -->
+    <div id="f2t" class="hidden">
+
+      <select id="fasType"></select>
+
+      <input id="fasQty"
+        type="number"
+        placeholder="Fastener Quantity">
+
+      <button class="calculate-btn"
+        onclick="fastenerToTable()">
+        Calculate
+      </button>
+
+      <div id="fasResult2" class="output"></div>
+
+    </div>
+
   </div>
+
+</div>
 
   <!-- PILING -->
   <div id="piling" class="page">
