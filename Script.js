@@ -1,110 +1,87 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+function openTab(id, btn){
+
+  // hide all pages
+  document.querySelectorAll(".page")
+    .forEach(page => {
+      page.classList.remove("active");
+    });
+
+  // show selected page
+  document.getElementById(id)
+    .classList.add("active");
+
+  // remove active from buttons
+  document.querySelectorAll(".bottom-nav button")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+  // activate clicked button
+  btn.classList.add("active");
 }
 
-body{
-  background:#f4f6f8;
+/* MMS */
+function calcMMS(){
+
+  let t = Number(document.getElementById("mmsTables").value);
+
+  let rafters = t * 12;
+
+  document.getElementById("mmsOut").innerHTML =
+    "Rafters Required: <b>" + rafters + "</b>";
 }
 
-/* HEADER */
-.header{
-  background:#111;
-  color:#fff;
-  padding:15px;
-  text-align:center;
-  font-size:18px;
-  font-weight:bold;
+/* PILING */
+function calcPiling(){
+
+  let t = Number(document.getElementById("pileTables").value);
+
+  let piles = t * 2;
+
+  document.getElementById("pileOut").innerHTML =
+    "Total Piles: <b>" + piles + "</b>";
 }
 
-/* CONTENT */
-.content{
-  padding:15px;
-  padding-bottom:90px;
+/* MODULE */
+function calcModule(){
+
+  let full = Number(document.getElementById("fullTables").value);
+
+  let half = Number(document.getElementById("halfTables").value);
+
+  let totalModules =
+    (full * 58) +
+    (half * 29);
+
+  let pallets =
+    Math.ceil(totalModules / 33);
+
+  let leftover =
+    (pallets * 33) - totalModules;
+
+  document.getElementById("moduleOut").innerHTML =
+    `
+    Total Modules: <b>${totalModules}</b><br>
+    Pallets Required: <b>${pallets}</b><br>
+    Left Over Modules: <b>${leftover}</b>
+    `;
 }
 
-/* PAGE */
-.page{
-  display:none;
-}
+/* ELECTRICAL */
+function calcElectrical(){
 
-.page.active{
-  display:block;
-}
+  let modules =
+    Number(document.getElementById("modules").value);
 
-/* CARD */
-.card{
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
+  let strings =
+    Math.floor(modules / 29);
 
-/* INPUT */
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid #ddd;
-  border-radius:8px;
-  font-size:15px;
-}
+  let inverters =
+    Math.ceil(strings / 18);
 
-/* BUTTON */
-button{
-  border:none;
-  cursor:pointer;
-}
-
-/* MAIN BUTTON */
-.card button{
-  width:100%;
-  padding:12px;
-  background:#007bff;
-  color:#fff;
-  border-radius:8px;
-  font-size:15px;
-  font-weight:bold;
-}
-
-/* OUTPUT */
-.output{
-  margin-top:15px;
-  background:#eef5ff;
-  padding:12px;
-  border-radius:8px;
-  line-height:1.6;
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  height:70px;
-  background:#fff;
-  display:flex;
-  border-top:1px solid #ddd;
-}
-
-.bottom-nav button{
-  flex:1;
-  background:none;
-  color:#777;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-}
-
-.bottom-nav button.active{
-  color:#007bff;
-  font-weight:bold;
-}
-
-.bottom-nav span{
-  margin-top:4px;
+  document.getElementById("electricalOut").innerHTML =
+    `
+    Total Strings: <b>${strings}</b><br>
+    Inverters Required: <b>${inverters}</b>
+    `;
 }
