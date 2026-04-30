@@ -1,87 +1,179 @@
-function openTab(id, btn){
+let mmsType = "full";
 
-  // hide all pages
-  document.querySelectorAll(".page")
-    .forEach(page => {
-      page.classList.remove("active");
-    });
+/* MATERIAL DATA */
+const material = {
 
-  // show selected page
-  document.getElementById(id)
-    .classList.add("active");
+  full:{
+    Rafter:12,
+    "Purlin 1":4,
+    "Purlin 2":4,
+    "Purlin 3":4,
+    "Purlin 4":4,
+    "Purlin 5":4,
+    "Purlin 6":4,
+    "Front Bracing":12,
+    "Rear Bracing":12,
+    "Connecting Channel":12,
+    "Cross Bracing":2
+  },
 
-  // remove active from buttons
-  document.querySelectorAll(".bottom-nav button")
-    .forEach(button => {
-      button.classList.remove("active");
-    });
+  half:{
+    Rafter:7,
+    "Purlin 7":4,
+    "Purlin 8":4,
+    "Purlin 9":4,
+    "Front Bracing":7,
+    "Rear Bracing":7,
+    "Connecting Channel":7,
+    "Cross Bracing":2
+  }
 
-  // activate clicked button
+};
+
+/* FASTENER DATA */
+const fastener = {
+
+  full:{
+    "M12×30 Nut–Bolt":24,
+    "M12×30 PW":48,
+    "M12×30 SW":24,
+    "M10×30 Nut–Bolt":324,
+    "M10×30 PW":472,
+    "M10×30 SW":324,
+    "M10×30 RW":176,
+    "M8×25 Nut-Bolt":232,
+    "M8×25 RW":232
+  },
+
+  half:{
+    "M12×30 Nut–Bolt":14,
+    "M12×30 PW":28,
+    "M12×30 SW":14,
+    "M10×30 Nut–Bolt":176,
+    "M10×30 PW":264,
+    "M10×30 SW":176,
+    "M10×30 RW":88,
+    "M8×25 Nut-Bolt":116,
+    "M8×25 RW":116
+  }
+
+};
+
+/* TABLE TYPE */
+function setMMSTable(type,btn){
+
+  mmsType = type;
+
+  document.querySelectorAll(".table-btn")
+    .forEach(b=>b.classList.remove("active"));
+
   btn.classList.add("active");
+
+  loadDropdowns();
 }
 
-/* MMS */
-function calcMMS(){
+/* SWITCH MODE */
+function showMMS(id,btn){
 
-  let t = Number(document.getElementById("mmsTables").value);
+  document.querySelectorAll(".mode-btn")
+    .forEach(b=>b.classList.remove("active"));
 
-  let rafters = t * 12;
+  btn.classList.add("active");
 
-  document.getElementById("mmsOut").innerHTML =
-    "Rafters Required: <b>" + rafters + "</b>";
+  ["t2m","m2t","t2f","f2t"]
+    .forEach(div=>{
+      document.getElementById(div)
+        .classList.add("hidden");
+    });
+
+  document.getElementById(id)
+    .classList.remove("hidden");
 }
 
-/* PILING */
-function calcPiling(){
+/* LOAD DROPDOWN */
+function loadDropdowns(){
 
-  let t = Number(document.getElementById("pileTables").value);
+  matType.innerHTML = "";
 
-  let piles = t * 2;
+  for(let k in material[mmsType]){
+    matType.innerHTML +=
+      `<option value="${k}">${k}</option>`;
+  }
 
-  document.getElementById("pileOut").innerHTML =
-    "Total Piles: <b>" + piles + "</b>";
+  fasType.innerHTML = "";
+
+  for(let k in fastener[mmsType]){
+    fasType.innerHTML +=
+      `<option value="${k}">${k}</option>`;
+  }
 }
 
-/* MODULE */
-function calcModule(){
+loadDropdowns();
 
-  let full = Number(document.getElementById("fullTables").value);
+/* TABLE → MATERIAL */
+function calcMaterial(){
 
-  let half = Number(document.getElementById("halfTables").value);
+  const n = +mmsTables.value;
 
-  let totalModules =
-    (full * 58) +
-    (half * 29);
+  let out = "";
 
-  let pallets =
-    Math.ceil(totalModules / 33);
+  for(let k in material[mmsType]){
 
-  let leftover =
-    (pallets * 33) - totalModules;
+    out += `
+      ${k}: <b>
+      ${material[mmsType][k] * n}
+      </b><br>
+    `;
+  }
 
-  document.getElementById("moduleOut").innerHTML =
+  mmsResult.innerHTML = out;
+}
+
+/* MATERIAL → TABLE */
+function materialToTable(){
+
+  const q = +matQty.value;
+  const t = matType.value;
+
+  mmsResult2.innerHTML =
     `
-    Total Modules: <b>${totalModules}</b><br>
-    Pallets Required: <b>${pallets}</b><br>
-    Left Over Modules: <b>${leftover}</b>
+    Tables Possible:
+    <b>
+    ${Math.floor(q / material[mmsType][t])}
+    </b>
     `;
 }
 
-/* ELECTRICAL */
-function calcElectrical(){
+/* TABLE → FASTENER */
+function calcFasteners(){
 
-  let modules =
-    Number(document.getElementById("modules").value);
+  const n = +fasTables.value;
 
-  let strings =
-    Math.floor(modules / 29);
+  let out = "";
 
-  let inverters =
-    Math.ceil(strings / 18);
+  for(let k in fastener[mmsType]){
 
-  document.getElementById("electricalOut").innerHTML =
+    out += `
+      ${k}: <b>
+      ${fastener[mmsType][k] * n}
+      </b><br>
+    `;
+  }
+
+  fasResult.innerHTML = out;
+}
+
+/* FASTENER → TABLE */
+function fastenerToTable(){
+
+  const q = +fasQty.value;
+  const t = fasType.value;
+
+  fasResult2.innerHTML =
     `
-    Total Strings: <b>${strings}</b><br>
-    Inverters Required: <b>${inverters}</b>
+    Tables Possible:
+    <b>
+    ${Math.floor(q / fastener[mmsType][t])}
+    </b>
     `;
 }
