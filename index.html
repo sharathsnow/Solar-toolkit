@@ -1,50 +1,108 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Solar Toolkit</title>
 
-  <!-- LINK CSS -->
+  <!-- CSS FILE -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="app">
+<!-- HEADER -->
+<div class="header">
+  <h1>☀️ Solar Toolkit</h1>
+</div>
 
-  <div class="header">Solar Toolkit</div>
+<!-- CONTENT -->
+<div class="content">
 
-  <div class="content">
+  <!-- MMS -->
+  <div id="mms" class="page active">
+    <div class="card">
+      <h2>🏗️ MMS Calculator</h2>
 
-    <div id="mms" class="page active">
-      <div class="card">
-        <h3>MMS</h3>
-        <input id="mmsTables" type="number" placeholder="Tables">
-        <button onclick="calcMMS()">Calculate</button>
-        <div id="mmsOut" class="output"></div>
-      </div>
+      <input type="number" id="mmsTables" placeholder="Enter Tables">
+
+      <button onclick="calcMMS()">Calculate</button>
+
+      <div id="mmsOut" class="output"></div>
     </div>
-
-    <div id="piling" class="page">
-      <div class="card">
-        <h3>Piling</h3>
-        <input id="pileTables" type="number">
-        <button onclick="calcPiling()">Calculate</button>
-        <div id="pileOut" class="output"></div>
-      </div>
-    </div>
-
   </div>
 
-  <div class="bottom-nav">
-    <button onclick="openTab('mms',this)" class="active">MMS</button>
-    <button onclick="openTab('piling',this)">Piling</button>
+  <!-- PILING -->
+  <div id="piling" class="page">
+    <div class="card">
+      <h2>🚧 Piling</h2>
+
+      <input type="number" id="pileTables" placeholder="Enter Tables">
+
+      <button onclick="calcPiling()">Calculate</button>
+
+      <div id="pileOut" class="output"></div>
+    </div>
+  </div>
+
+  <!-- MODULE -->
+  <div id="module" class="page">
+    <div class="card">
+      <h2>☀️ Module / Pallet</h2>
+
+      <input type="number" id="fullTables" placeholder="Full Tables">
+
+      <input type="number" id="halfTables" placeholder="Half Tables">
+
+      <button onclick="calcModule()">Calculate</button>
+
+      <div id="moduleOut" class="output"></div>
+    </div>
+  </div>
+
+  <!-- ELECTRICAL -->
+  <div id="electrical" class="page">
+    <div class="card">
+      <h2>⚡ Electrical</h2>
+
+      <input type="number" id="modules" placeholder="Total Modules">
+
+      <button onclick="calcElectrical()">Calculate</button>
+
+      <div id="electricalOut" class="output"></div>
+    </div>
   </div>
 
 </div>
 
-<!-- LINK JS -->
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+
+  <button class="active"
+    onclick="openTab('mms',this)">
+    🏗️
+    <span>MMS</span>
+  </button>
+
+  <button onclick="openTab('piling',this)">
+    🚧
+    <span>Piling</span>
+  </button>
+
+  <button onclick="openTab('module',this)">
+    ☀️
+    <span>Module</span>
+  </button>
+
+  <button onclick="openTab('electrical',this)">
+    ⚡
+    <span>Electrical</span>
+  </button>
+
+</div>
+
+<!-- JS FILE -->
 <script src="script.js"></script>
 
 </body>
