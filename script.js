@@ -177,3 +177,88 @@ function fastenerToTable(){
     </b>
     `;
 }
+/* PAGE NAVIGATION */
+function openTab(id,btn){
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll(".bottom-nav button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  btn.classList.add("active");
+}
+
+/* PILING */
+function calcPiling(){
+
+  const tables =
+    Number(document.getElementById("pileTables").value) || 0;
+
+  const piles = tables * 2;
+
+  document.getElementById("pileOut").innerHTML = `
+    <b>Total Tables:</b> ${tables}<br>
+    <b>Total Piles:</b> ${piles}
+  `;
+}
+
+/* MODULE */
+function calcModule(){
+
+  const full =
+    Number(document.getElementById("fullTables").value) || 0;
+
+  const half =
+    Number(document.getElementById("halfTables").value) || 0;
+
+  const fullModules = full * 58;
+  const halfModules = half * 29;
+
+  const totalModules = fullModules + halfModules;
+
+  const pallets = Math.ceil(totalModules / 33);
+
+  const leftover =
+    (pallets * 33) - totalModules;
+
+  document.getElementById("moduleOut").innerHTML = `
+    <b>Full Table Modules:</b> ${fullModules}<br>
+    <b>Half Table Modules:</b> ${halfModules}<br><br>
+
+    <b>Total Modules:</b> ${totalModules}<br>
+    <b>Pallets Required:</b> ${pallets}<br>
+    <b>Balance Modules:</b> ${leftover}
+  `;
+}
+
+/* ELECTRICAL */
+function calcElectrical(){
+
+  const modules =
+    Number(document.getElementById("modules").value) || 0;
+
+  const modulesPerString = 29;
+
+  const totalStrings =
+    Math.floor(modules / modulesPerString);
+
+  const stringsPerInverter = 18;
+
+  const inverters =
+    Math.ceil(totalStrings / stringsPerInverter);
+
+  const dcCables =
+    totalStrings * 2;
+
+  document.getElementById("electricalOut").innerHTML = `
+    <b>Total Strings:</b> ${totalStrings}<br>
+    <b>Total Inverters:</b> ${inverters}<br>
+    <b>DC String Cables:</b> ${dcCables}<br>
+    <b>Modules/String:</b> 29
+  `;
+}
