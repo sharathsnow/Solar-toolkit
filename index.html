@@ -191,16 +191,42 @@
   </div>
 
   <!-- ELECTRICAL -->
-  <div id="electrical" class="page">
-    <div class="card">
-      <h2>⚡ Electrical</h2>
+  <!-- ELECTRICAL -->
+<div id="electrical" class="page">
 
-      <input type="number" id="modules" placeholder="Total Modules">
+  <div class="card">
 
-      <button onclick="calcElectrical()">Calculate</button>
+    <h2>⚡ Electrical Calculations</h2>
 
-      <div id="electricalOut" class="output"></div>
-    </div>
+    <!-- SETTINGS -->
+    <label>Module Wattage</label>
+
+    <select id="moduleWp">
+      <option value="695">695 Wp</option>
+      <option value="705">705 Wp</option>
+      <option value="710" selected>710 Wp</option>
+    </select>
+
+    <label>Strings per Inverter</label>
+
+    <select id="stringsPerInv">
+      <option value="19" selected>19 Strings</option>
+      <option value="18">18 Strings</option>
+    </select>
+
+    <!-- TABLE INPUT -->
+    <input type="number"
+      id="electricalTables"
+      placeholder="Enter Tables">
+
+    <button class="calculate-btn"
+      onclick="calcElectrical()">
+      Calculate
+    </button>
+
+    <!-- OUTPUT -->
+    <div id="electricalOut" class="output"></div>
+
   </div>
 
 </div>
