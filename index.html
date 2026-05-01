@@ -12,40 +12,7 @@
 
 <body>
 
-
 <!-- HEADER -->
-<div class="top-header">
-
-  <div class="logo-box">
-    <img src="IMG_4454.jpeg" alt="logo">
-  </div>
-
-  <div class="title-box">
-    <h1>Amararaja Solar Infra</h1>
-    <p>(Nagalooty)</p>
-  </div>
-    <div class="info-btn" onclick="toggleInfo()">
-  i
-</div>
-
-   </div>
-
-
-<div class="info-popup" id="info">
-
-  <h3>Internal Utility Tool</h3>
-
-  <p>
-    For easy site engineering calculations.
-  </p>
-
-    <p>
-    Developed by <b>Sharath Chandra(electrical QC)</b><br>
-    Version: v2.33<br>
-    Last Updated: 01-may-2026
-  </p>
-
-</<!-- HEADER --><!-- HEADER -->
 <div class="top-header">
 
   <div class="logo-box">
@@ -102,273 +69,292 @@
 
 </div>
 
-<!-- DRAWINGS -->
-<div id="drawings" class="page">
-
-  <div class="card">
-
-    <h2>📁 Site Drawings</h2>
-
-    <div class="drawing-grid">
-
-      <div class="drawing-card">
-        <img src="images/drawing1.jpg">
-        <p>MMS Layout</p>
-      </div>
-
-      <div class="drawing-card">
-        <img src="images/drawing2.jpg">
-        <p>Foundation Detail</p>
-      </div>
-
-      <div class="drawing-card">
-        <img src="images/drawing3.jpg">
-        <p>SLD Diagram</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
 <!-- CONTENT -->
 <div class="content">
-  
-  <!-- MMS -->
-<div id="mms" class="page">
 
-  <div class="card">
+  <!-- DRAWINGS -->
+  <div id="drawings" class="page">
 
-    <h2>🏗️ MMS Calculator</h2>
+    <div class="card">
 
-    <!-- TABLE TYPE -->
-    <div class="tabs">
-      <button class="table-btn active"
-        onclick="setMMSTable('full',this)">
-        Full Table
-      </button>
+      <h2>📁 Site Drawings</h2>
 
-      <button class="table-btn"
-        onclick="setMMSTable('half',this)">
-        Half Table
-      </button>
-    </div>
+      <div class="drawing-grid">
 
-    <!-- MODES -->
-    <div class="subtabs">
+        <div class="drawing-card">
+          <img src="images/drawing1.jpg">
+          <p>MMS Layout</p>
+        </div>
 
-      <button class="mode-btn active"
-        onclick="showMMS('t2m',this)">
-        Table → Material
-      </button>
+        <div class="drawing-card">
+          <img src="images/drawing2.jpg">
+          <p>Foundation Detail</p>
+        </div>
 
-      <button class="mode-btn"
-        onclick="showMMS('m2t',this)">
-        Material → Table
-      </button>
+        <div class="drawing-card">
+          <img src="images/drawing3.jpg">
+          <p>SLD Diagram</p>
+        </div>
 
-      <button class="mode-btn"
-        onclick="showMMS('t2f',this)">
-        Table → Fasteners
-      </button>
-
-      <button class="mode-btn"
-        onclick="showMMS('f2t',this)">
-        Fasteners → Table
-      </button>
-
-    </div>
-
-    <!-- TABLE TO MATERIAL -->
-    <div id="t2m">
-
-      <input id="mmsTables"
-        type="number"
-        placeholder="No. of Tables">
-
-      <button class="calculate-btn"
-        onclick="calcMaterial()">
-        Calculate
-      </button>
-
-      <div id="mmsResult" class="output"></div>
-
-    </div>
-
-    <!-- MATERIAL TO TABLE -->
-    <div id="m2t" class="hidden">
-
-      <select id="matType"></select>
-
-      <input id="matQty"
-        type="number"
-        placeholder="Material Quantity">
-
-      <button class="calculate-btn"
-        onclick="materialToTable()">
-        Calculate
-      </button>
-
-      <div id="mmsResult2" class="output"></div>
-
-    </div>
-
-    <!-- TABLE TO FASTENER -->
-    <div id="t2f" class="hidden">
-
-      <input id="fasTables"
-        type="number"
-        placeholder="No. of Tables">
-
-      <button class="calculate-btn"
-        onclick="calcFasteners()">
-        Calculate
-      </button>
-
-      <div id="fasResult" class="output"></div>
-
-    </div>
-
-    <!-- FASTENER TO TABLE -->
-    <div id="f2t" class="hidden">
-
-      <select id="fasType"></select>
-
-      <input id="fasQty"
-        type="number"
-        placeholder="Fastener Quantity">
-
-      <button class="calculate-btn"
-        onclick="fastenerToTable()">
-        Calculate
-      </button>
-
-      <div id="fasResult2" class="output"></div>
+      </div>
 
     </div>
 
   </div>
 
-</div>
+  <!-- MMS -->
+  <div id="mms" class="page">
+
+    <div class="card">
+
+      <h2>🏗️ MMS Calculator</h2>
+
+      <!-- TABLE TYPE -->
+      <div class="tabs">
+
+        <button class="table-btn active"
+          onclick="setMMSTable('full',this)">
+          Full Table
+        </button>
+
+        <button class="table-btn"
+          onclick="setMMSTable('half',this)">
+          Half Table
+        </button>
+
+      </div>
+
+      <!-- MODES -->
+      <div class="subtabs">
+
+        <button class="mode-btn active"
+          onclick="showMMS('t2m',this)">
+          Table → Material
+        </button>
+
+        <button class="mode-btn"
+          onclick="showMMS('m2t',this)">
+          Material → Table
+        </button>
+
+        <button class="mode-btn"
+          onclick="showMMS('t2f',this)">
+          Table → Fasteners
+        </button>
+
+        <button class="mode-btn"
+          onclick="showMMS('f2t',this)">
+          Fasteners → Table
+        </button>
+
+      </div>
+
+      <!-- TABLE TO MATERIAL -->
+      <div id="t2m">
+
+        <input id="mmsTables"
+          type="number"
+          placeholder="No. of Tables">
+
+        <button class="calculate-btn"
+          onclick="calcMaterial()">
+          Calculate
+        </button>
+
+        <div id="mmsResult" class="output"></div>
+
+      </div>
+
+      <!-- MATERIAL TO TABLE -->
+      <div id="m2t" class="hidden">
+
+        <select id="matType"></select>
+
+        <input id="matQty"
+          type="number"
+          placeholder="Material Quantity">
+
+        <button class="calculate-btn"
+          onclick="materialToTable()">
+          Calculate
+        </button>
+
+        <div id="mmsResult2" class="output"></div>
+
+      </div>
+
+      <!-- TABLE TO FASTENER -->
+      <div id="t2f" class="hidden">
+
+        <input id="fasTables"
+          type="number"
+          placeholder="No. of Tables">
+
+        <button class="calculate-btn"
+          onclick="calcFasteners()">
+          Calculate
+        </button>
+
+        <div id="fasResult" class="output"></div>
+
+      </div>
+
+      <!-- FASTENER TO TABLE -->
+      <div id="f2t" class="hidden">
+
+        <select id="fasType"></select>
+
+        <input id="fasQty"
+          type="number"
+          placeholder="Fastener Quantity">
+
+        <button class="calculate-btn"
+          onclick="fastenerToTable()">
+          Calculate
+        </button>
+
+        <div id="fasResult2" class="output"></div>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- PILING -->
   <div id="piling" class="page">
+
     <div class="card">
+
       <h2>🚧 Piling</h2>
 
-      <input type="number" id="pileTables" placeholder="Enter Tables">
+      <input type="number"
+        id="pileTables"
+        placeholder="Enter Tables">
 
-      <button onclick="calcPiling()">Calculate</button>
+      <button onclick="calcPiling()">
+        Calculate
+      </button>
 
       <div id="pileOut" class="output"></div>
+
     </div>
+
   </div>
 
   <!-- MODULE -->
   <div id="module" class="page">
+
     <div class="card">
+
       <h2>☀️ Module / Pallet</h2>
 
-      <input type="number" id="fullTables" placeholder="Full Tables">
+      <input type="number"
+        id="fullTables"
+        placeholder="Full Tables">
 
-      <input type="number" id="halfTables" placeholder="Half Tables">
+      <input type="number"
+        id="halfTables"
+        placeholder="Half Tables">
 
-      <button onclick="calcModule()">Calculate</button>
+      <button onclick="calcModule()">
+        Calculate
+      </button>
 
       <div id="moduleOut" class="output"></div>
+
     </div>
+
   </div>
 
   <!-- ELECTRICAL -->
-<div id="electrical" class="page active">
+  <div id="electrical" class="page active">
 
-  <div class="card">
+    <div class="card">
 
-    <h2>⚡ Electrical Calculations</h2>
+      <h2>⚡ Electrical Calculations</h2>
 
-    <!-- SETTINGS -->
-    <label>Module Wattage</label>
+      <label>Module Wattage</label>
 
-    <select id="moduleWp">
-      <option value="695">695 Wp</option>
-      <option value="705">705 Wp</option>
-      <option value="710" selected>710 Wp</option>
-    </select>
+      <select id="moduleWp">
+        <option value="695">695 Wp</option>
+        <option value="705">705 Wp</option>
+        <option value="710" selected>710 Wp</option>
+      </select>
 
-    <label>Strings per Inverter</label>
+      <label>Strings per Inverter</label>
 
-    <select id="stringsPerInv">
-      <option value="19" selected>19 Strings</option>
-      <option value="18">18 Strings</option>
-    </select>
+      <select id="stringsPerInv">
+        <option value="19" selected>19 Strings</option>
+        <option value="18">18 Strings</option>
+      </select>
 
-    <!-- TABLE INPUT -->
-    <input type="number"
-      id="electricalTables"
-      placeholder="Enter Tables">
+      <input type="number"
+        id="electricalTables"
+        placeholder="Enter Tables">
 
-    <button class="calculate-btn"
-      onclick="calcElectrical()">
-      Calculate
-    </button>
+      <button class="calculate-btn"
+        onclick="calcElectrical()">
+        Calculate
+      </button>
 
-    <!-- OUTPUT -->
-    <div id="electricalOut" class="output"></div>
-<hr>
+      <div id="electricalOut" class="output"></div>
 
-<h3>⚡ Power Converter</h3>
+      <hr>
 
-<input type="number"
-  id="powerInput"
-  placeholder="Enter Value">
+      <h3>⚡ Power Converter</h3>
 
-<select id="powerUnit">
-  <option value="MW" selected>MW</option>
-  <option value="kW">kW</option>
-  <option value="W">W</option>
-  <option value="GW">GW</option>
-</select>
+      <input type="number"
+        id="powerInput"
+        placeholder="Enter Value">
 
-<button class="calculate-btn"
-  onclick="convertPower()">
-  Convert
-</button>
+      <select id="powerUnit">
+        <option value="MW" selected>MW</option>
+        <option value="kW">kW</option>
+        <option value="W">W</option>
+        <option value="GW">GW</option>
+      </select>
 
-<div id="powerOutput" class="output"></div>
+      <button class="calculate-btn"
+        onclick="convertPower()">
+        Convert
+      </button>
+
+      <div id="powerOutput" class="output"></div>
+
+    </div>
+
   </div>
 
 </div>
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <button class="active" onclick="openTab('electrical',this)">
+
+  <button class="active"
+    onclick="openTab('electrical',this)">
     ⚡
     <span>Electrical</span>
   </button>
-  <button 
-    onclick="openTab('mms',this)">
+
+  <button onclick="openTab('mms',this)">
     🏗️
     <span>MMS</span>
   </button>
-
 
   <button onclick="openTab('module',this)">
     ☀️
     <span>Module(Pallet)</span>
   </button>
-    <button onclick="openTab('piling',this)">
+
+  <button onclick="openTab('piling',this)">
     🚧
     <span>Piling</span>
   </button>
 
-
-
-    <button onclick="openTab('drawings',this)">
-
+  <button onclick="openTab('drawings',this)">
     📁
-
-<span>Drawings</span>
-
+    <span>Drawings</span>
   </button>
 
 </div>
