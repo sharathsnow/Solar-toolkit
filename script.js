@@ -323,13 +323,13 @@ function convertPower(){
 
   document.getElementById("powerOutput").innerHTML = `
   
-    <b>Watts:</b> ${w.toLocaleString()} W<br>
+  <b>Watts:</b> ${w.toLocaleString()} W<br>
 
-    <b>Kilowatts:</b> ${kw.toFixed(3)} kW<br>
+  <b>Kilowatts:</b> ${parseFloat(kw.toFixed(3))} kW<br>
 
-    <b>Megawatts:</b> ${mw.toFixed(3)} MW<br>
+  <b>Megawatts:</b> ${parseFloat(mw.toFixed(3))} MW<br>
 
-    <b>Gigawatts:</b> ${gw.toFixed(6)} GW
+  <b>Gigawatts:</b> ${parseFloat(gw.toFixed(6))} GW
 
-  `;
+`;
 }
