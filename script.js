@@ -293,7 +293,7 @@ function calcElectrical(){
 
   /* LT PANELS */
   const ltPanels =
-    (inverters / 16).toFixed(2);
+  Math.ceil(inverters / 16);
 
   document.getElementById("electricalOut").innerHTML = `
   
