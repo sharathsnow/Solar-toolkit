@@ -312,6 +312,10 @@ function convertPower(){
   }
 
   /* convert to all units */
+  if(!value){
+  return alert("Enter value");
+}
+
   const w = watts;
   const kw = watts / 1000;
   const mw = watts / 1000000;
