@@ -251,7 +251,27 @@
 
     <!-- OUTPUT -->
     <div id="electricalOut" class="output"></div>
+<hr>
 
+<h3>⚡ Power Converter</h3>
+
+<input type="number"
+  id="powerInput"
+  placeholder="Enter Value">
+
+<select id="powerUnit">
+  <option value="MW" selected>MW</option>
+  <option value="kW">kW</option>
+  <option value="W">W</option>
+  <option value="GW">GW</option>
+</select>
+
+<button class="calculate-btn"
+  onclick="convertPower()">
+  Convert
+</button>
+
+<div id="powerOutput" class="output"></div>
   </div>
 
 </div>
