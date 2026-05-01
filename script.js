@@ -309,3 +309,49 @@ function calcElectrical(){
 
   `;
 }
+/* POWER CONVERTER */
+function convertPower(){
+
+  const value =
+    Number(document.getElementById("powerInput").value);
+
+  const unit =
+    document.getElementById("powerUnit").value;
+
+  let watts;
+
+  /* convert input to watts first */
+  if(unit === "W"){
+    watts = value;
+  }
+
+  if(unit === "kW"){
+    watts = value * 1000;
+  }
+
+  if(unit === "MW"){
+    watts = value * 1000000;
+  }
+
+  if(unit === "GW"){
+    watts = value * 1000000000;
+  }
+
+  /* convert to all units */
+  const w = watts;
+  const kw = watts / 1000;
+  const mw = watts / 1000000;
+  const gw = watts / 1000000000;
+
+  document.getElementById("powerOutput").innerHTML = `
+  
+    <b>Watts:</b> ${w.toLocaleString()} W<br>
+
+    <b>Kilowatts:</b> ${kw.toFixed(3)} kW<br>
+
+    <b>Megawatts:</b> ${mw.toFixed(3)} MW<br>
+
+    <b>Gigawatts:</b> ${gw.toFixed(6)} GW
+
+  `;
+}
