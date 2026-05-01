@@ -260,26 +260,34 @@
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-
-  <button class="active"
+  <button class="active" onclick="openTab('electrical',this)">
+    ⚡
+    <span>Electrical</span>
+  </button>
+  <button 
     onclick="openTab('mms',this)">
     🏗️
     <span>MMS</span>
   </button>
 
-  <button onclick="openTab('piling',this)">
+
+  <button onclick="openTab('module',this)">
+    ☀️
+    <span>Module(Pallet)</span>
+  </button>
+    <button onclick="openTab('piling',this)">
     🚧
     <span>Piling</span>
   </button>
 
-  <button onclick="openTab('module',this)">
-    ☀️
-    <span>Module</span>
-  </button>
 
-  <button onclick="openTab('electrical',this)">
-    ⚡
-    <span>Electrical</span>
+
+    <button onclick="openTab('drawings',this)">
+
+    📁
+
+<span>Drawings</span>
+
   </button>
 
 </div>
