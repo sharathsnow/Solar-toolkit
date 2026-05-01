@@ -239,32 +239,6 @@ function calcModule(){
 /* ELECTRICAL */
 function calcElectrical(){
 
-  const modules =
-    Number(document.getElementById("modules").value) || 0;
-
-  const modulesPerString = 29;
-
-  const totalStrings =
-    Math.floor(modules / modulesPerString);
-
-  const stringsPerInverter = 18;
-
-  const inverters =
-    Math.ceil(totalStrings / stringsPerInverter);
-
-  const dcCables =
-    totalStrings * 2;
-
-  document.getElementById("electricalOut").innerHTML = `
-    <b>Total Strings:</b> ${totalStrings}<br>
-    <b>Total Inverters:</b> ${inverters}<br>
-    <b>DC String Cables:</b> ${dcCables}<br>
-    <b>Modules/String:</b> 29
-  `;
-}
-/* ELECTRICAL */
-function calcElectrical(){
-
   const tables =
     Number(document.getElementById("electricalTables").value) || 0;
 
