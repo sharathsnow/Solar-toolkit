@@ -333,3 +333,14 @@ function convertPower(){
 
 `;
 }
+function toggleInfo(){
+
+  const info =
+    document.getElementById("info");
+
+  if(info.style.display === "block"){
+    info.style.display = "none";
+  }else{
+    info.style.display = "block";
+  }
+}
