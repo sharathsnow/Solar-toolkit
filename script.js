@@ -349,3 +349,19 @@ function toggleInfo(){
 
   }
 }
+/* CLOSE POPUP WHEN TOUCHING OUTSIDE */
+document.addEventListener("click", function(e){
+
+  const popup = document.getElementById("info");
+  const button = document.querySelector(".info-btn");
+
+  /* if clicked outside popup and outside info button */
+  if(
+    popup.style.display === "block" &&
+    !popup.contains(e.target) &&
+    !button.contains(e.target)
+  ){
+    popup.style.display = "none";
+  }
+
+});
