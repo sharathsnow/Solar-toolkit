@@ -344,3 +344,18 @@ function toggleInfo(){
     info.style.display = "block";
   }
 }
+function toggleInfo(){
+
+  const popup =
+    document.getElementById("info");
+
+  if(popup.style.display === "block"){
+
+    popup.style.display = "none";
+
+  }else{
+
+    popup.style.display = "block";
+
+  }
+}
