@@ -199,7 +199,7 @@ function calcPiling(){
   const tables =
     Number(document.getElementById("pileTables").value) || 0;
 
-  const piles = tables * 2;
+  const piles = tables * 12;
 
   document.getElementById("pileOut").innerHTML = `
     <b>Total Tables:</b> ${tables}<br>
