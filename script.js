@@ -253,17 +253,13 @@ function calcElectrical(){
 
   /* STRINGS → INVERTERS */
   const inverters =
-    Math.ceil(strings / stringsPerInv);
+    Math.ceil(strings / /* TABLE → MW DC */
+const mwDC =
+  (tables * 58 * moduleWp) / 1000000;
 
-  /* TABLE → MW DC */
-  const mwDC =
-    ((tables * 58 * moduleWp) / 1000000)
-    .toFixed(2);
-
-  /* INVERTER → MW AC */
-  const mwAC =
-    ((inverters * 275) / 1000)
-    .toFixed(2);
+/* AC = DC ÷ 1.4 */
+const mwAC =
+  mwDC / 1.4;
 
   /* LT PANELS */
   const ltPanels =
