@@ -396,28 +396,30 @@ const designMix = {
   }
 
 };
-function showDesignMix(){
+<!-- DESIGN MIX -->
+<div id="designmix" class="page">
 
-  const grade =
-    document.getElementById("gradeSelect").value;
+  <div class="card">
 
-  const d = designMix[grade];
+    <h2>🧱 Concrete Design Mix</h2>
 
-  document.getElementById("mixOutput").innerHTML = `
+    <select id="mixGrade">
+      <option value="M25">M25 Grade</option>
+      <option value="M10">M10 Grade</option>
+      <option value="M7.5">M7.5 Grade</option>
+    </select>
 
-    <b>Grade:</b> ${grade}<br><br>
+    <input type="number"
+      id="mixCum"
+      placeholder="Enter Concrete in CUM">
 
-    <b>Cement Content:</b> ${d.cement}<br>
+    <button class="calculate-btn"
+      onclick="calcMixDesign()">
+      Calculate
+    </button>
 
-    <b>Fine Aggregate (M Sand):</b> ${d.sand} Kg<br>
+    <div id="mixOutput" class="output"></div>
 
-    <b>20MM Aggregate:</b> ${d.agg20} Kg<br>
+  </div>
 
-    <b>12MM Aggregate:</b> ${d.agg12} Kg<br>
-
-    <b>Admixture:</b> ${d.admixture} Kg<br>
-
-    <b>Water:</b> ${d.water} Litres
-
-  `;
-}
+</div>
