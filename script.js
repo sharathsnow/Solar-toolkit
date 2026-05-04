@@ -366,60 +366,58 @@ document.addEventListener("click", function(e){
 });
 /* CONCRETE DESIGN MIX */
 
-const designMix = {
 
-  "M25": {
-    cement: "375 Kg / 8 Bags",
-    sand: 925,
-    agg20: 451,
-    agg12: 624,
-    admixture: 4.32,
-    water: 162
-  },
 
-  "M10": {
-    cement: "220 Kg / 5 Bags",
-    sand: 950,
-    agg20: 700,
-    agg12: 450,
-    admixture: 2.5,
-    water: 180
-  },
+/* CALCULATE DESIGN MIX */
 
-  "M7.5": {
-    cement: "180 Kg / 4 Bags",
-    sand: 1000,
-    agg20: 750,
-    agg12: 500,
-    admixture: 2,
-    water: 190
+function calcMixDesign(){
+
+  const grade =
+    document.getElementById("mixGrade").value;
+
+  const cum =
+    Number(document.getElementById("mixCum").value);
+
+  if(!cum){
+    return alert("Enter CUM value");
   }
 
-};
-<!-- DESIGN MIX -->
-<div id="designmix" class="page">
+  let d;
 
-  <div class="card">
+  if(grade === "M25"){
+    d = mixDesign.M25;
+  }
 
-    <h2>🧱 Concrete Design Mix</h2>
+  if(grade === "M10"){
+    d = mixDesign.M10;
+  }
 
-    <select id="mixGrade">
-      <option value="M25">M25 Grade</option>
-      <option value="M10">M10 Grade</option>
-      <option value="M7.5">M7.5 Grade</option>
-    </select>
+  if(grade === "M7.5"){
+    d = mixDesign.M7_5;
+  }
 
-    <input type="number"
-      id="mixCum"
-      placeholder="Enter Concrete in CUM">
+  document.getElementById("mixOutput").innerHTML = `
 
-    <button class="calculate-btn"
-      onclick="calcMixDesign()">
-      Calculate
-    </button>
+    <b>${grade} Grade - ${cum} CUM</b><br><br>
 
-    <div id="mixOutput" class="output"></div>
+    <b>Cement:</b>
+    ${(d.cement * cum).toFixed(1)} Kg
+   (${Math.ceil((d.cement * cum) / 50)} Bags)<br>
 
-  </div>
+    <b>Fine Aggregate:</b>
+    ${(d.sand * cum).toFixed(1)} Kg<br>
 
-</div>
+    <b>20MM Aggregate:</b>
+    ${(d.agg20 * cum).toFixed(1)} Kg<br>
+
+    <b>12MM Aggregate:</b>
+    ${(d.agg12 * cum).toFixed(1)} Kg<br>
+
+    <b>Admixture:</b>
+    ${(d.admixture * cum).toFixed(2)} Kg<br>
+
+    <b>Water:</b>
+    ${(d.water * cum).toFixed(1)} Litres
+
+  `;
+}
