@@ -237,6 +237,7 @@ function calcModule(){
 }
 
 /* ELECTRICAL */
+/* ELECTRICAL */
 function calcElectrical(){
 
   const tables =
@@ -253,17 +254,19 @@ function calcElectrical(){
 
   /* STRINGS → INVERTERS */
   const inverters =
-    Math.ceil(strings / /* TABLE → MW DC */
-const mwDC =
-  (tables * 58 * moduleWp) / 1000000;
+    Math.ceil(strings / stringsPerInv);
 
-/* AC = DC ÷ 1.4 */
-const mwAC =
-  mwDC / 1.4;
+  /* TABLE → MW DC */
+  const mwDC =
+    ((tables * 58 * moduleWp) / 1000000);
+
+  /* AC = DC ÷ 1.4 */
+  const mwAC =
+    (mwDC / 1.4);
 
   /* LT PANELS */
   const ltPanels =
-  Math.ceil(inverters / 16);
+    Math.ceil(inverters / 16);
 
   document.getElementById("electricalOut").innerHTML = `
   
@@ -273,9 +276,9 @@ const mwAC =
 
     <b>LT Panels Required:</b> ${ltPanels}<br>
 
-    <b>DC Capacity:</b> ${mwDC} MW<br>
+    <b>DC Capacity:</b> ${mwDC.toFixed(2)} MW<br>
 
-    <b>AC Capacity:</b> ${mwAC} MW
+    <b>AC Capacity:</b> ${mwAC.toFixed(2)} MW
 
   `;
 }
