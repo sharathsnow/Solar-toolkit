@@ -364,3 +364,60 @@ document.addEventListener("click", function(e){
   }
 
 });
+/* CONCRETE DESIGN MIX */
+
+const designMix = {
+
+  "M25": {
+    cement: "375 Kg / 8 Bags",
+    sand: 925,
+    agg20: 451,
+    agg12: 624,
+    admixture: 4.32,
+    water: 162
+  },
+
+  "M10": {
+    cement: "220 Kg / 5 Bags",
+    sand: 950,
+    agg20: 700,
+    agg12: 450,
+    admixture: 2.5,
+    water: 180
+  },
+
+  "M7.5": {
+    cement: "180 Kg / 4 Bags",
+    sand: 1000,
+    agg20: 750,
+    agg12: 500,
+    admixture: 2,
+    water: 190
+  }
+
+};
+function showDesignMix(){
+
+  const grade =
+    document.getElementById("gradeSelect").value;
+
+  const d = designMix[grade];
+
+  document.getElementById("mixOutput").innerHTML = `
+
+    <b>Grade:</b> ${grade}<br><br>
+
+    <b>Cement Content:</b> ${d.cement}<br>
+
+    <b>Fine Aggregate (M Sand):</b> ${d.sand} Kg<br>
+
+    <b>20MM Aggregate:</b> ${d.agg20} Kg<br>
+
+    <b>12MM Aggregate:</b> ${d.agg12} Kg<br>
+
+    <b>Admixture:</b> ${d.admixture} Kg<br>
+
+    <b>Water:</b> ${d.water} Litres
+
+  `;
+}
