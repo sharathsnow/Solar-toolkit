@@ -326,25 +326,26 @@
 
   </div>
 <!-- DESIGN MIX -->
+<!-- DESIGN MIX -->
 <div id="designmix" class="page">
 
   <div class="card">
 
-    <h2>🧱 Design Mix</h2>
+    <h2>🧱 Concrete Design Mix</h2>
 
-    <select id="gradeSelect">
-
+    <select id="mixGrade">
       <option value="M25">M25 Grade</option>
-
       <option value="M10">M10 Grade</option>
-
       <option value="M7.5">M7.5 Grade</option>
-
     </select>
 
+    <input type="number"
+      id="mixCum"
+      placeholder="Enter Concrete in CUM">
+
     <button class="calculate-btn"
-      onclick="showDesignMix()">
-      Show Mix
+      onclick="calcMixDesign()">
+      Calculate
     </button>
 
     <div id="mixOutput" class="output"></div>
